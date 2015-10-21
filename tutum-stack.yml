@@ -1,0 +1,18 @@
+web:
+  image: tutum/hello-world:latest
+  ports:
+    - "80"
+  tags:
+    - pingtest
+
+pingclient:
+  image: impulsecloud/web-ping
+  environment:
+    - PYTHONUNBUFFERED=0
+  ports:
+    - "80:80"
+  links:
+    - web
+  tags:
+    - pingtest
+
